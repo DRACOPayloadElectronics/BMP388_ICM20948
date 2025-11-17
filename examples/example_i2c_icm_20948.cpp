@@ -12,7 +12,7 @@ void setup() {
 
     // I2C Initialization
     Wire.begin();
-    Wire.setClock(400000);
+    // Wire.setClock(400000); // Uncomment to set a preffered clock value
 
     // ICM Initialization
 
@@ -22,7 +22,6 @@ void setup() {
 
     while (ICM.status != ICM_20948_Stat_Ok) {
         Serial.println("Failed to connect with ICM_20948");
-        Serial.println("Trying again...");
         delay(500);
     }
     Serial.println("Connection Succesful");
@@ -42,5 +41,18 @@ void loop() {
 
     if (ICM.dataReady()){
         // collect data once the sensor is ready
+        ICM.getAGMT(); // updates readings
+
+        ICM.accX(); // accelerometer value for x axis in milli g
     }
+}
+
+// Key note measurements should be returned in milli g (1g ~= 9.8 m/s^2), therefore we could use unit conversion.
+// Example:
+
+/// @brief 
+/// @param val_g -> acceleration value in milli g
+/// @return val_ms -> acceleration value in m/s^2
+float getAccelInMS(float val_g){
+    return val_g * 0.00980665;
 }

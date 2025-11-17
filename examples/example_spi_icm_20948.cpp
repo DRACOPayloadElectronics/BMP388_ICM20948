@@ -2,6 +2,8 @@
 #include <ICM_20948.h>
 #include <Wire.h>
 
+// Probably not needed because the tradeoffs in performance from SPI to I2C for our application are negligible
+
 // CS can be defined or open for assignment
 // Defining CS Pin
 #define CS_PIN 10
@@ -38,15 +40,4 @@ void loop() {
     if (ICM.dataReady()){
         // collect data once the sensor is ready
     }
-}
-
-
-// Key note measurements should be returned in g (1g ~= 9.8 m/s^2), therefore we could use unit conversion.
-// Example:
-
-/// @brief 
-/// @param val_g -> acceleration value in g
-/// @return val_ms -> acceleration value in m/s^2
-float getAccelInMS(float val_g){
-    return val_g * 9.8;
 }
