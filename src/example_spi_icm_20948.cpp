@@ -37,10 +37,16 @@ void setup() {
 void loop() {
     if (ICM.dataReady()){
         // collect data once the sensor is ready
-        ICM.getAGMT();
     }
 }
 
-float getAcceleration(float rawValue){
-    
+
+// Key note measurements should be returned in g (1g ~= 9.8 m/s^2), therefore we could use unit conversion.
+// Example:
+
+/// @brief 
+/// @param val_g -> acceleration value in g
+/// @return val_ms -> acceleration value in m/s^2
+float getAccelInMS(float val_g){
+    return val_g * 9.8;
 }
