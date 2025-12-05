@@ -1,4 +1,4 @@
-# USLI 2026 Payload Sensor Code
+# USLI 2026 Payload Sensors Code
 
 This repository contains code for the sensors selected for the payload being developed by the team for the **University Student Rocketry Challenge (USLI) 2026**.
 
@@ -16,8 +16,5 @@ The project aims to integrate various sensors into a payload for the USLI 2026 c
  
 - Note: As the project advances more sensors could be included.
 
-### Installation
+## Schematics for connecting sensors with Teensy 4.1 by I2C
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/amarrero7/DRACO_2026
